@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-faceCascade = cv2.CascadeClassifier('xml\cascade6.xml')
+faceCascade = cv2.CascadeClassifier('xml\cascade.xml')
 img = cv2.imread("IMG_0385.jpg")
 img = cv2.resize(img, (320,320))
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
