@@ -6,9 +6,9 @@ img = cv2.resize(img, (320,320))
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 faces = faceCascade.detectMultiScale(
         gray,
-        scaleFactor=1.01,
-        minNeighbors=200,
-        minSize=(120,120),
+        scaleFactor=1.18,
+        minNeighbors=25,
+        minSize=(100,100),
         flags = cv2.IMREAD_GRAYSCALE
     )
 for (x, y, w, h) in faces:
