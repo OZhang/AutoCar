@@ -3,7 +3,7 @@
 <params>
   <stageType>BOOST</stageType>
   <featureType>LBP</featureType>
-  <height>100</height>
+  <height>80</height>
   <width>100</width>
   <stageParams>
     <boostType>GAB</boostType>
