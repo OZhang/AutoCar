@@ -1,8 +1,8 @@
 #include <WiFiUdp.h>
 #include <ESP8266WiFi.h>
 
-const char* ssid = "ty200824G"; //Enter your wifi network SSID
-const char* password = "hongjie@1982"; //Enter your wifi network password
+const char* ssid = "***********************"; //Enter your wifi network SSID
+const char* password = "*******************"; //Enter your wifi network password
 
 //Motor B
 int PWMB = 16; //Speed control-d0
