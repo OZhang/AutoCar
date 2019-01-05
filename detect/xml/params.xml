@@ -3,13 +3,13 @@
 <params>
   <stageType>BOOST</stageType>
   <featureType>LBP</featureType>
-  <height>60</height>
-  <width>60</width>
+  <height>80</height>
+  <width>100</width>
   <stageParams>
     <boostType>GAB</boostType>
-    <minHitRate>9.9900001287460327e-001</minHitRate>
-    <maxFalseAlarm>2.0000000298023224e-001</maxFalseAlarm>
-    <weightTrimRate>9.4999998807907104e-001</weightTrimRate>
+    <minHitRate>9.9900001287460327e-01</minHitRate>
+    <maxFalseAlarm>2.0000000298023224e-01</maxFalseAlarm>
+    <weightTrimRate>9.4999998807907104e-01</weightTrimRate>
     <maxDepth>1</maxDepth>
     <maxWeakCount>100</maxWeakCount></stageParams>
   <featureParams>

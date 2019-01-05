@@ -1,280 +1,60 @@
-./pos/0.jpg
-./pos/1.jpg
-./pos/10.jpg
-./pos/100.jpg
-./pos/101.jpg
-./pos/102.jpg
-./pos/103.jpg
-./pos/104.jpg
-./pos/105.jpg
-./pos/106.jpg
-./pos/107.jpg
-./pos/108.jpg
-./pos/109.jpg
-./pos/11.jpg
-./pos/110.jpg
-./pos/111.jpg
-./pos/112.jpg
-./pos/113.jpg
-./pos/114.jpg
-./pos/115.jpg
-./pos/116.jpg
-./pos/117.jpg
-./pos/118.jpg
-./pos/119.jpg
-./pos/12.jpg
-./pos/120.jpg
-./pos/121.jpg
-./pos/122.jpg
-./pos/123.jpg
-./pos/124.jpg
-./pos/125.jpg
-./pos/126.jpg
-./pos/127.jpg
-./pos/128.jpg
-./pos/129.jpg
-./pos/13.jpg
-./pos/130.jpg
-./pos/131.jpg
-./pos/132.jpg
-./pos/133.jpg
-./pos/134.jpg
-./pos/135.jpg
-./pos/136.jpg
-./pos/137.jpg
-./pos/138.jpg
-./pos/139.jpg
-./pos/14.jpg
-./pos/140.jpg
-./pos/141.jpg
-./pos/142.jpg
-./pos/143.jpg
-./pos/144.jpg
-./pos/145.jpg
-./pos/146.jpg
-./pos/147.jpg
-./pos/148.jpg
-./pos/149.jpg
-./pos/15.jpg
-./pos/150.jpg
-./pos/151.jpg
-./pos/152.jpg
-./pos/153.jpg
-./pos/154.jpg
-./pos/155.jpg
-./pos/156.jpg
-./pos/157.jpg
-./pos/158.jpg
-./pos/159.jpg
-./pos/16.jpg
-./pos/160.jpg
-./pos/161.jpg
-./pos/162.jpg
-./pos/163.jpg
-./pos/164.jpg
-./pos/165.jpg
-./pos/166.jpg
-./pos/167.jpg
-./pos/168.jpg
-./pos/169.jpg
-./pos/17.jpg
-./pos/170.jpg
-./pos/171.jpg
-./pos/172.jpg
-./pos/173.jpg
-./pos/174.jpg
-./pos/175.jpg
-./pos/176.jpg
-./pos/177.jpg
-./pos/178.jpg
-./pos/179.jpg
-./pos/18.jpg
-./pos/180.jpg
-./pos/181.jpg
-./pos/182.jpg
-./pos/183.jpg
-./pos/184.jpg
-./pos/185.jpg
-./pos/186.jpg
-./pos/187.jpg
-./pos/188.jpg
-./pos/189.jpg
-./pos/19.jpg
-./pos/190.jpg
-./pos/191.jpg
-./pos/192.jpg
-./pos/193.jpg
-./pos/194.jpg
-./pos/195.jpg
-./pos/196.jpg
-./pos/197.jpg
-./pos/198.jpg
-./pos/199.jpg
-./pos/2.jpg
-./pos/20.jpg
-./pos/200.jpg
-./pos/201.jpg
-./pos/202.jpg
-./pos/203.jpg
-./pos/204.jpg
-./pos/205.jpg
-./pos/206.jpg
-./pos/207.jpg
-./pos/208.jpg
-./pos/209.jpg
-./pos/21.jpg
-./pos/210.jpg
-./pos/211.jpg
-./pos/212.jpg
-./pos/213.jpg
-./pos/214.jpg
-./pos/215.jpg
-./pos/216.jpg
-./pos/217.jpg
-./pos/218.jpg
-./pos/219.jpg
-./pos/22.jpg
-./pos/220.jpg
-./pos/221.jpg
-./pos/222.jpg
-./pos/223.jpg
-./pos/224.jpg
-./pos/225.jpg
-./pos/226.jpg
-./pos/227.jpg
-./pos/228.jpg
-./pos/229.jpg
-./pos/23.jpg
-./pos/230.jpg
-./pos/231.jpg
-./pos/232.jpg
-./pos/233.jpg
-./pos/234.jpg
-./pos/235.jpg
-./pos/236.jpg
-./pos/237.jpg
-./pos/238.jpg
-./pos/239.jpg
-./pos/24.jpg
-./pos/240.jpg
-./pos/241.jpg
-./pos/242.jpg
-./pos/243.jpg
-./pos/244.jpg
-./pos/245.jpg
-./pos/246.jpg
-./pos/247.jpg
-./pos/248.jpg
-./pos/249.jpg
-./pos/25.jpg
-./pos/250.jpg
-./pos/251.jpg
-./pos/252.jpg
-./pos/253.jpg
-./pos/254.jpg
-./pos/255.jpg
-./pos/256.jpg
-./pos/257.jpg
-./pos/258.jpg
-./pos/259.jpg
-./pos/26.jpg
-./pos/260.jpg
-./pos/261.jpg
-./pos/262.jpg
-./pos/263.jpg
-./pos/264.jpg
-./pos/265.jpg
-./pos/266.jpg
-./pos/267.jpg
-./pos/268.jpg
-./pos/269.jpg
-./pos/27.jpg
-./pos/270.jpg
-./pos/271.jpg
-./pos/272.jpg
-./pos/273.jpg
-./pos/274.jpg
-./pos/275.jpg
-./pos/276.jpg
-./pos/277.jpg
-./pos/278.jpg
-./pos/279.jpg
-./pos/28.jpg
-./pos/29.jpg
-./pos/3.jpg
-./pos/30.jpg
-./pos/31.jpg
-./pos/32.jpg
-./pos/33.jpg
-./pos/34.jpg
-./pos/35.jpg
-./pos/36.jpg
-./pos/37.jpg
-./pos/38.jpg
-./pos/39.jpg
-./pos/4.jpg
-./pos/40.jpg
-./pos/41.jpg
-./pos/42.jpg
-./pos/43.jpg
-./pos/44.jpg
-./pos/45.jpg
-./pos/46.jpg
-./pos/47.jpg
-./pos/48.jpg
-./pos/49.jpg
-./pos/5.jpg
-./pos/50.jpg
-./pos/51.jpg
-./pos/52.jpg
-./pos/53.jpg
-./pos/54.jpg
-./pos/55.jpg
-./pos/56.jpg
-./pos/57.jpg
-./pos/58.jpg
-./pos/59.jpg
-./pos/6.jpg
-./pos/60.jpg
-./pos/61.jpg
-./pos/62.jpg
-./pos/63.jpg
-./pos/64.jpg
-./pos/65.jpg
-./pos/66.jpg
-./pos/67.jpg
-./pos/68.jpg
-./pos/69.jpg
-./pos/7.jpg
-./pos/70.jpg
-./pos/71.jpg
-./pos/72.jpg
-./pos/73.jpg
-./pos/74.jpg
-./pos/75.jpg
-./pos/76.jpg
-./pos/77.jpg
-./pos/78.jpg
-./pos/79.jpg
-./pos/8.jpg
-./pos/80.jpg
-./pos/81.jpg
-./pos/82.jpg
-./pos/83.jpg
-./pos/84.jpg
-./pos/85.jpg
-./pos/86.jpg
-./pos/87.jpg
-./pos/88.jpg
-./pos/89.jpg
-./pos/9.jpg
-./pos/90.jpg
-./pos/91.jpg
-./pos/92.jpg
-./pos/93.jpg
-./pos/94.jpg
-./pos/95.jpg
-./pos/96.jpg
-./pos/97.jpg
-./pos/98.jpg
-./pos/99.jpg
+C:\testProject\opencv\AutoCar\detect\pos\1.jpg 1 12 6 67 68
+C:\testProject\opencv\AutoCar\detect\pos\10.jpg 1 18 7 79 69
+C:\testProject\opencv\AutoCar\detect\pos\11.jpg 1 11 4 81 64
+C:\testProject\opencv\AutoCar\detect\pos\12.jpg 1 11 4 79 70
+C:\testProject\opencv\AutoCar\detect\pos\13.jpg 1 15 2 75 72
+C:\testProject\opencv\AutoCar\detect\pos\14.jpg 1 13 2 68 70
+C:\testProject\opencv\AutoCar\detect\pos\15.jpg 1 0 0 82 70
+C:\testProject\opencv\AutoCar\detect\pos\16.jpg 1 30 6 50 61
+C:\testProject\opencv\AutoCar\detect\pos\17.jpg 1 27 2 57 65
+C:\testProject\opencv\AutoCar\detect\pos\18.jpg 1 29 10 53 67
+C:\testProject\opencv\AutoCar\detect\pos\19.jpg 1 18 9 62 69
+C:\testProject\opencv\AutoCar\detect\pos\2.jpg 1 19 2 60 75
+C:\testProject\opencv\AutoCar\detect\pos\20.jpg 1 21 6 62 73
+C:\testProject\opencv\AutoCar\detect\pos\21.jpg 1 18 9 72 66
+C:\testProject\opencv\AutoCar\detect\pos\22.jpg 1 18 12 61 64
+C:\testProject\opencv\AutoCar\detect\pos\23.jpg 1 11 10 79 64
+C:\testProject\opencv\AutoCar\detect\pos\24.jpg 1 8 11 86 60
+C:\testProject\opencv\AutoCar\detect\pos\25.jpg 1 7 16 87 57
+C:\testProject\opencv\AutoCar\detect\pos\26.jpg 1 24 10 64 63
+C:\testProject\opencv\AutoCar\detect\pos\27.jpg 1 27 4 56 62
+C:\testProject\opencv\AutoCar\detect\pos\28.jpg 1 25 6 47 59
+C:\testProject\opencv\AutoCar\detect\pos\29.jpg 1 29 3 54 69
+C:\testProject\opencv\AutoCar\detect\pos\3.jpg 1 16 5 61 69
+C:\testProject\opencv\AutoCar\detect\pos\30.jpg 1 18 10 63 67
+C:\testProject\opencv\AutoCar\detect\pos\31.jpg 1 24 2 50 68
+C:\testProject\opencv\AutoCar\detect\pos\32.jpg 1 18 1 54 71
+C:\testProject\opencv\AutoCar\detect\pos\33.jpg 1 13 0 63 66
+C:\testProject\opencv\AutoCar\detect\pos\34.jpg 1 5 6 78 65
+C:\testProject\opencv\AutoCar\detect\pos\35.jpg 1 10 5 76 72
+C:\testProject\opencv\AutoCar\detect\pos\36.jpg 1 17 7 63 70
+C:\testProject\opencv\AutoCar\detect\pos\37.jpg 1 12 5 68 72
+C:\testProject\opencv\AutoCar\detect\pos\38.jpg 1 12 5 84 66
+C:\testProject\opencv\AutoCar\detect\pos\39.jpg 1 8 12 92 58
+C:\testProject\opencv\AutoCar\detect\pos\4.jpg 1 16 4 84 66
+C:\testProject\opencv\AutoCar\detect\pos\40.jpg 1 10 16 92 50
+C:\testProject\opencv\AutoCar\detect\pos\41.jpg 1 5 12 92 56
+C:\testProject\opencv\AutoCar\detect\pos\42.jpg 1 12 10 87 51
+C:\testProject\opencv\AutoCar\detect\pos\43.jpg 1 11 5 86 64
+C:\testProject\opencv\AutoCar\detect\pos\44.jpg 1 8 6 91 70
+C:\testProject\opencv\AutoCar\detect\pos\45.jpg 1 11 6 90 50
+C:\testProject\opencv\AutoCar\detect\pos\46.jpg 1 11 7 97 60
+C:\testProject\opencv\AutoCar\detect\pos\47.jpg 1 10 16 98 49
+C:\testProject\opencv\AutoCar\detect\pos\48.jpg 1 8 9 97 54
+C:\testProject\opencv\AutoCar\detect\pos\49.jpg 1 13 2 88 59
+C:\testProject\opencv\AutoCar\detect\pos\5.jpg 1 16 1 66 74
+C:\testProject\opencv\AutoCar\detect\pos\50.jpg 1 16 12 82 52
+C:\testProject\opencv\AutoCar\detect\pos\51.jpg 1 7 13 99 52
+C:\testProject\opencv\AutoCar\detect\pos\52.jpg 1 17 17 87 40
+C:\testProject\opencv\AutoCar\detect\pos\53.jpg 1 13 3 58 68
+C:\testProject\opencv\AutoCar\detect\pos\54.jpg 1 21 2 60 74
+C:\testProject\opencv\AutoCar\detect\pos\55.jpg 1 16 5 64 65
+C:\testProject\opencv\AutoCar\detect\pos\56.jpg 1 11 8 55 68
+C:\testProject\opencv\AutoCar\detect\pos\57.jpg 1 6 10 73 69
+C:\testProject\opencv\AutoCar\detect\pos\58.jpg 1 13 6 65 70
+C:\testProject\opencv\AutoCar\detect\pos\59.jpg 1 25 3 53 73
+C:\testProject\opencv\AutoCar\detect\pos\6.jpg 1 20 4 72 70
+C:\testProject\opencv\AutoCar\detect\pos\60.jpg 1 26 3 66 71
+C:\testProject\opencv\AutoCar\detect\pos\7.jpg 1 37 5 67 73
+C:\testProject\opencv\AutoCar\detect\pos\8.jpg 1 39 0 61 72
+C:\testProject\opencv\AutoCar\detect\pos\9.jpg 1 29 4 73 72
