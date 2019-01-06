@@ -31,6 +31,7 @@ const int RIGHT_PRESSED = 5;
 const int RIGHT_RELEASED = 6;
 const int LEFT_PRESSED = 7;
 const int LEFT_RELEASED = 8;
+const int RELEASED = 9;
 
 byte packetBuffer[512];
 
@@ -165,6 +166,11 @@ void detectKeyPresses() {
     else if (incomingByte == LEFT_RELEASED) {
       leftPressed = false;
     }
+    else {
+      forwardsPressed = false;
+      backwardsPressed = false;
+      rightPressed = false;
+      leftPressed = false;    }
     delay(50);
 }
 
