@@ -1,31 +1,39 @@
-# import tkinter as tk
+__author__ = 'zhengwang'
+
 import numpy as np
-import socket
-import getopt, sys
-import time
-import os
 import cv2
+import serial
 import pygame
 from pygame.locals import *
+import socket
+import time
+import os
 
-class Controller:
-    DEFAULT_PORT = 1111
-    img_save_dir = ".\Webcam\chessboard_cali_1280_960"
 
-    def __init__(self, ip, input_size):
-        self.pressed = {}
-        self.prevPressed = {}
-        self._initPresses()
-        # self._create_ui()
-        self._host = ip
-        self._port = self.DEFAULT_PORT
+class CollectTrainingData(object):
+    
+    def __init__(self, host, port, esphost, espport, input_size):
+
+        self.server_socket = socket.socket()
+        self.server_socket.bind((host, port))
+        self.server_socket.listen(0)
+        self._host = esphost
+        self._port = espport
+
+        # accept a single connection
+        self.connection = self.server_socket.accept()[0].makefile('rb')
+
+        # connect to a seral port
+#        self.ser = serial.Serial(serial_port, 115200, timeout=1)
         self.send_inst = True
+
         self.input_size = input_size
 
         # create labels
         self.k = np.zeros((4, 4), 'float')
         for i in range(4):
             self.k[i, i] = 1
+
         pygame.init()
         pygame.display.set_mode((250, 250))
 
@@ -33,20 +41,7 @@ class Controller:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.sendto(content, (self._host, self._port))
 
-    def _initPresses(self):
-        self.pressed["w"] = False
-        self.pressed["a"] = False
-        self.pressed["s"] = False
-        self.pressed["d"] = False
-        self.prevPressed["w"] = False
-        self.prevPressed["a"] = False
-        self.prevPressed["s"] = False
-        self.prevPressed["d"] = False
-
-    def start(self, ):
-
-        source = "http://192.168.1.230:8080/videofeed"
-        cam = cv2.VideoCapture(source)
+    def collect(self):
 
         saved_frame = 0
         total_frame = 0
@@ -61,65 +56,107 @@ class Controller:
 
         # stream video frames one by one
         try:
-            # stream_bytes = b' '
+            stream_bytes = b' '
             frame = 1
             while self.send_inst:
-            #while(cam.isOpened()):
-                if cam.isOpened():
-                    ret, frame = cam.read()
-                    cv2.imshow('frame', frame)
-                    if not ret:
-                        break
-                    # press ESC to escape (ESC ASCII value: 27)
-                    # if cv2.waitKey(1) & 0xFF == 27:
-                    #     break
-                    image = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                stream_bytes += self.connection.read(1024)
+                first = stream_bytes.find(b'\xff\xd8')
+                last = stream_bytes.find(b'\xff\xd9')
+
+                if first != -1 and last != -1:
+                    jpg = stream_bytes[first:last + 2]
+                    stream_bytes = stream_bytes[last + 2:]
+                    image = cv2.imdecode(np.frombuffer(jpg, dtype=np.uint8), cv2.IMREAD_GRAYSCALE)
+                    image = cv2.flip(image, 0, dst=None)
+                    # select lower half of the image
                     height, width = image.shape
-                    # height, width = frame.shape[:2]
                     roi = image[int(height/2):height, :]
+
+                    cv2.imshow('image', image)
 
                     # reshape the roi image into a vector
                     temp_array = roi.reshape(1, int(height/2) * width).astype(np.float32)
-                            
+                    
                     frame += 1
-                    #print(str(frame))
                     total_frame += 1
 
-                # # get input from human driver
-                for event in pygame.event.get():
-                    if event.type == KEYDOWN:
-                        key_input = pygame.key.get_pressed()
-                        # print(key_input)
-                        # simple orders
-                        if key_input[pygame.K_UP]:
-                            print("Forward")
-                            saved_frame += 1
-                            X = np.vstack((X, temp_array))
-                            y = np.vstack((y, self.k[2]))
-                            self._netcat(b"\x01")
-                        elif key_input[pygame.K_DOWN]:
-                            print("Reverse")
-                            self._netcat(b"\x03")
-                        elif key_input[pygame.K_RIGHT]:
-                            print("Right")
-                            X = np.vstack((X, temp_array))
-                            y = np.vstack((y, self.k[1]))
-                            saved_frame += 1
-                            self._netcat(b"\x05")
-                        elif key_input[pygame.K_LEFT]:
-                            print("Left")
-                            X = np.vstack((X, temp_array))
-                            y = np.vstack((y, self.k[0]))
-                            saved_frame += 1
-                            self._netcat(b"\x07")
-                        elif key_input[pygame.K_x] or key_input[pygame.K_q]:
-                            print("exit")
-                            self.send_inst = False
-                            self._netcat(b"\x09")
-                            break
+                    # get input from human driver
+                    for event in pygame.event.get():
+                        if event.type == KEYDOWN:
+                            key_input = pygame.key.get_pressed()
 
-                    elif event.type == pygame.KEYUP:
-                        self._netcat(b"\x09")
+                            # complex orders
+                            if key_input[pygame.K_UP] and key_input[pygame.K_RIGHT]:
+                                print("Forward Right")
+                                X = np.vstack((X, temp_array))
+                                y = np.vstack((y, self.k[1]))
+                                saved_frame += 1
+                                #self.ser.write(chr(6).encode())
+                                self._netcat(chr(6).encode())
+
+                            elif key_input[pygame.K_UP] and key_input[pygame.K_LEFT]:
+                                print("Forward Left")
+                                X = np.vstack((X, temp_array))
+                                y = np.vstack((y, self.k[0]))
+                                saved_frame += 1
+                                #self.ser.write(chr(7).encode())
+                                self._netcat(chr(7).encode())
+
+                            elif key_input[pygame.K_DOWN] and key_input[pygame.K_RIGHT]:
+                                print("Reverse Right")
+                                #self.ser.write(chr(8).encode())
+                                self._netcat(chr(8).encode())
+
+                            elif key_input[pygame.K_DOWN] and key_input[pygame.K_LEFT]:
+                                print("Reverse Left")
+                                #self.ser.write(chr(9).encode())
+                                self._netcat(chr(9).encode())
+
+                            # simple orders
+                            elif key_input[pygame.K_UP]:
+                                print("Forward")
+                                saved_frame += 1
+                                X = np.vstack((X, temp_array))
+                                y = np.vstack((y, self.k[2]))
+                                #self.ser.write(chr(1).encode())
+                                self._netcat(chr(1).encode())
+
+                            elif key_input[pygame.K_DOWN]:
+                                print("Reverse")
+                                #self.ser.write(chr(2).encode())
+                                self._netcat(chr(2).encode())
+
+                            elif key_input[pygame.K_RIGHT]:
+                                print("Right")
+                                X = np.vstack((X, temp_array))
+                                y = np.vstack((y, self.k[1]))
+                                saved_frame += 1
+                                #self.ser.write(chr(3).encode())
+                                self._netcat(chr(3).encode())
+
+                            elif key_input[pygame.K_LEFT]:
+                                print("Left")
+                                X = np.vstack((X, temp_array))
+                                y = np.vstack((y, self.k[0]))
+                                saved_frame += 1
+                                #self.ser.write(chr(4).encode())
+                                self._netcat(chr(4).encode())
+
+                            elif key_input[pygame.K_x] or key_input[pygame.K_q]:
+                                print("exit")
+                                self.send_inst = False
+                                #self.ser.write(chr(0).encode())
+                                self._netcat(chr(0).encode())
+
+                                #self.ser.close()
+                                break
+
+                        elif event.type == pygame.KEYUP:
+                            #self.ser.write(chr(0).encode())
+                            self._netcat(chr(0).encode())
+
+                    if cv2.waitKey(1) & 0xFF == ord('q'):
+                        break
 
             # save data as a numpy file
             file_name = str(int(time.time()))
@@ -127,8 +164,6 @@ class Controller:
             if not os.path.exists(directory):
                 os.makedirs(directory)
             try:
-                print(len(X))
-                print(len(y))
                 np.savez(directory + '/' + file_name + '.npz', train=X, train_labels=y)
             except IOError as e:
                 print(e)
@@ -137,81 +172,28 @@ class Controller:
             # calculate streaming duration
             print("Streaming duration: , %.2fs" % ((end - start) / cv2.getTickFrequency()))
 
+            print(X.shape)
+            print(y.shape)
+            print("Total frame: ", total_frame)
+            print("Saved frame: ", saved_frame)
+            print("Dropped frame: ", total_frame - saved_frame)
+
         finally:
-            cam.release()
-            cv2.destroyAllWindows()
+            self.connection.close()
+            self.server_socket.close()
 
-    def _check_for_press(self, key, command):
-        if self._is_pressed(key):
-            self.prevPressed[key] = True
-            self._netcat(command)
-            print(key + " pressed")
 
-    def _check_for_release(self, key, command):
-        if self._is_released(key):
-            self.prevPressed[key] = False
-            self._netcat(command)
-            print(key + " released")
+if __name__ == '__main__':
+    
+    h, p = "192.168.1.127", 8000
 
-    def _check_key_press(self):
-        self._check_for_press("w", b"\x01")
-        self._check_for_release("w", b"\x02")
-        self._check_for_press("s", b"\x03")
-        self._check_for_release("s", b"\x04")
-        self._check_for_press("d", b"\x05")
-        self._check_for_release("d", b"\x06")
-        self._check_for_press("a", b"\x07")
-        self._check_for_release("a", b"\x08")
+    # host, port
+    host = "192.168.1.131"
+    # port
+    port = 1111
 
-        # self.root.after(20, self._check_key_press)
-
-    def _is_pressed(self, key):
-        return self.pressed[key] and self.prevPressed[key] == False
-
-    def _is_released(self, key):
-        return self.pressed[key] == False and self.prevPressed[key]
-
-    # def _create_ui(self):
-    #     self.root = tk.Tk()
-    #     self.root.geometry('400x300')
-    #     self._set_bindings()
-
-    # def _set_bindings(self):
-    #     for char in ["w","s","d", "a"]:
-    #         self.root.bind("<KeyPress-%s>" % char, self._pressed)
-    #         self.root.bind("<KeyRelease-%s>" % char, self._released)
-    #         self.pressed[char] = False
-
-    def _pressed(self, event):
-        self.pressed[event.char] = True
-
-    def _released(self, event):
-        self.pressed[event.char] = False
-
-def main():
-    try:
-        opts, args = getopt.getopt(sys.argv[1:], "h:", ["host="])
-    except getopt.GetoptError as err:
-        print(str(err))
-        usage()
-        sys.exit(2)
-    host = ""
-    for o, a in opts:
-        if o in ("-h", "--host"):
-            host = a
-
-    if host == "":
-        print("Did not define host, use -h or --host to pass the host name of the car")
-        sys.exit(2)
     # vector size, half of the image
     s = 120 * 320
-    p = Controller(host, s)
-    p.start()
 
-def usage():
-    print("Available options:")
-    print("-h, --host  Define RC car IP address")
-
-
-if __name__ == "__main__":
-    main()
+    ctd = CollectTrainingData(h, p, host, port, s)
+    ctd.collect()
